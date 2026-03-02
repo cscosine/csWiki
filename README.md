@@ -1,2 +1,3 @@
 # csWiki
-the wiki of cscosine
+
+Visit [csWiki](https://cscosine.github.io/csWiki/) to navigate it!
