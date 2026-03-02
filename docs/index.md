@@ -16,7 +16,5 @@
     - [Actions Troubleshooting](gitHub/Actions.md#actions-troubleshooting)
   - [File CreateWiki](gitHub/CreateWiki.md)
     - [How To Create Wiki](gitHub/CreateWiki.md#how-to-create-wiki)
-  - [File GitHub](gitHub/GitHub.md)
-    - [GitHub](gitHub/GitHub.md#github)
 <!-- TOC END -->
 
