@@ -1,0 +1,35 @@
+repos:
+  - repo: local
+    hooks:
+      - id: generate-toc
+        name: Generate TOC
+        entry: ./generateTOC.py --quiet
+        language: system
+        pass_filenames: false
+        always_run: true
+        verbose: true
+
+  - repo: https://github.com/psf/black
+    rev: 24.3.0
+    hooks:
+      - id: black
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.4.4
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.10.0
+    hooks:
+      - id: mypy
+
+  - repo: local
+    hooks:
+      - id: no-unstaged-changes
+        name: Fail if unstaged changes exist
+        entry: git diff --quiet
+        language: system
+        pass_filenames: false
