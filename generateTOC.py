@@ -138,11 +138,24 @@ def extract_level1_sections(content: str) -> List[str]:
     Extract all level-1 headings:
 
         # Section Title
+
+    Ignoring fenced code blocks (```).
     """
     sections = []
+    in_code_block = False
 
     for line in content.splitlines():
-        match = re.match(r"^# (.+)", line.strip())
+        stripped = line.strip()
+
+        # Toggle code block state
+        if stripped.startswith("```"):
+            in_code_block = not in_code_block
+            continue
+
+        if in_code_block:
+            continue
+
+        match = re.match(r"^# (.+)", stripped)
         if match:
             sections.append(match.group(1))
 

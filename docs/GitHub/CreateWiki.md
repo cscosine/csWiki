@@ -1,6 +1,6 @@
 <!-- TOC BEGIN -->
 **Table Of Contents**
-- [../GitHub](GitHub.md)
+- [../gitHub](gitHub.md)
 - [How To Create Wiki](#how-to-create-wiki)
 <!-- TOC END -->
 
