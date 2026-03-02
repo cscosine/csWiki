@@ -10,15 +10,6 @@
 
 # Git Mini Cheat Sheet
 
-## Reusable Variable
-
-```bash
-# Define reusable tag variable
-TAG="v1.0.0"
-```
-
----
-
 ## Commit
 
 ```bash
@@ -159,6 +150,14 @@ git rebase --continue
 ---
 
 ## Tags
+
+Reusable Variable
+
+```bash
+# Define reusable tag variable
+TAG="v1.0.0"
+```
+---
 
 ```bash
 # Create lightweight tag
