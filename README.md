@@ -20,12 +20,15 @@ Key principles:
 ## 📁 Repository Structure
 
 - `README.md` → This file
-- `docs/` → Folder containing all published documentation
+- `docs/` → Folder containing all published documentation 
   - `index.md` → **Mandatory main entry file**
+  - other files and subfolders...
 - `.nojekyll` → Ensures GitHub Pages does not use Jekyll processing
 - `generateTOC.py` → Script that scans the `docs/` folder and automatically generates navigable TOC tables inside `.md` files
 - `.github/workflows/ci.yml` → CI pipeline enforcing formatting, linting, and type safety
 - `.pre-commit-config.yaml` → precommit hooks enforcing formatting, linting, and type safety
+- `.gitignore` → ignored files/folder/patterns by git
+- `.gitattributes` → specify type of files and avoid problems with CRLF/LF in Windows/Linux setup
 
 ---
 
@@ -49,6 +52,21 @@ Your Pages configuration should be:
 
 ## 🛠 Development Setup
 
+
+### 🌍 Clone Repository
+
+``` bash
+git clone git@github.com:cscosine/csWiki.git
+```
+
+or
+
+``` bash
+git clone https://github.com/cscosine/csWiki.git
+```
+
+---
+
 ### Create Virtual Environment
 
 ``` bash
@@ -62,13 +80,19 @@ source .venv/bin/activate
 .venv\Scripts\activate
 ```
 
+or for PowerShell
+
+``` bash
+.venv\Scripts\activate.ps1
+```
+
 ### Install Development Tools
 
 ``` bash
 pip install black ruff mypy pre-commit
 ```
 
-You may need `python3` instead of `python`.
+_Note_: You may need `python3` instead of `python`.
 
 ### Install Pre-Commit Hooks
 
@@ -109,6 +133,28 @@ Or commit --- pre-commit updates TOC automatically.
 
 ---
 
+## 📚 Add a New Folder
+
+1.  Create a folder `<foldername>` inside `docs/`
+1.  Create a file `<foldername>/<foldername>.md` too
+2.  Add TOC markers to the file
+
+    ```
+    <!-- TOC BEGIN -->
+    <!-- TOC END -->
+    ```
+
+3.  Write content
+4.  Run:
+
+    ``` bash
+    ./generateTOC.py
+    ```
+
+Or commit --- pre-commit updates TOC automatically.
+
+---
+
 ## 🔄 TOC Generation
 
 The script:
@@ -117,6 +163,7 @@ The script:
 -   Extracts headings (only first level: `#`)
 -   Builds a hierarchical table of contents
 -   Injects it between TOC markers
+-   _Note_: it assumes that each folder has `<foldername>/<foldername>.md` file that acts as main file for the folder. If this is not respected, a warning is generated and the folder is ignored
 
 If markers are missing → a warning is generated.
 
@@ -130,7 +177,9 @@ If markers are missing → a warning is generated.
 -   Pre-commit enforcement → pre-commit
 -   CI → GitHub Actions
 
-### Precommits
+---
+
+## Precommits
 
 Before every commit, the project runs automated checks to guarantee consistency, formatting, and repository integrity.
 
@@ -143,22 +192,6 @@ The following checks are enforced:
 - 🔒 **Repository Integrity** – Fails if unstaged changes remain after hooks run (`git diff --quiet`).
 
 If any check fails, the commit is blocked until the issues are resolved.
-
----
-
-## 🌍 Clone Repository
-
-### SSH
-
-``` bash
-git clone git@github.com:cscosine/csWiki.git
-```
-
-### HTTPS
-
-``` bash
-git clone https://github.com/cscosine/csWiki.git
-```
 
 ---
 

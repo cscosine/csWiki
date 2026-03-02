@@ -3,7 +3,7 @@ repos:
     hooks:
       - id: generate-toc
         name: Generate TOC
-        entry: ./generateTOC.py --quiet
+        entry: python generateTOC.py --quiet
         language: system
         pass_filenames: false
         always_run: true

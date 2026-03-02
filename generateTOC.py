@@ -116,7 +116,9 @@ def replace_toc(content: str, toc: str) -> Tuple[str, bool]:
         re.DOTALL,
     )
 
-    updated_content = re.sub(pattern, f"{TOC_BEGIN}\n{toc}\n{TOC_END}", content)
+    # keep replacement in a variable to avoid issues with backreferences in re.sub on windows
+    replacement = f"{TOC_BEGIN}\n{toc}\n{TOC_END}"
+    updated_content = re.sub(pattern, lambda _: replacement, content)
     return updated_content, True
 
 
@@ -424,7 +426,7 @@ def createTOCTreeImpl(rootPath: Path, node: FolderNode) -> TOCFolder:
         subfoldersToc.append(
             SectionWithAnchorAndLevel(
                 f"Subfolder {subfolder.folder_name}",
-                str(subfolder.folder_name / f"{subfolder.main_filename}.md"),
+                Path(subfolder.folder_name / f"{subfolder.main_filename}.md").as_posix(),
                 0,
             )
         )
@@ -433,7 +435,7 @@ def createTOCTreeImpl(rootPath: Path, node: FolderNode) -> TOCFolder:
             subfoldersToc.append(
                 SectionWithAnchorAndLevel(
                     te.section,
-                    str(subfolder.folder_name / te.anchor),
+                    Path(subfolder.folder_name / te.anchor).as_posix(),
                     te.level + 1,
                 )
             )
@@ -634,6 +636,7 @@ def main() -> int:
 
     if not quiet:
         # Optional debug:
+        print()
         print("📚 Generated TOC tree structure.\n")
         printTOCTree(toc_tree)
 
