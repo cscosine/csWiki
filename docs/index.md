@@ -1,3 +1,5 @@
+# Welcome To The cscosine Wiki!
+
 <!-- TOC BEGIN -->
 **Table Of Contents**
 - [Welcome To The cscosine Wiki!](index.md#welcome-to-the-cscosine-wiki!)
@@ -18,4 +20,3 @@
     - [GitHub](gitHub/GitHub.md#github)
 <!-- TOC END -->
 
-# Welcome To The cscosine Wiki!
