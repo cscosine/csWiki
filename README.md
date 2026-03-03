@@ -41,6 +41,7 @@ csWiki/
 │   ├── index.md                # **Mandatory main entry file**
 │   ├── _config.yml             # Jekyll configuration
 │   └── ...                     # Other .md files and subfolders
+├── conftest.py                 # Add src/ to python path to execute tests with `pytest`
 ├── generateTOC.py              # CLI entry point (thin wrapper)
 ├── pyproject.toml              # Project metadata & tool configuration
 ├── .pre-commit-config.yaml     # Pre-commit hooks
