@@ -1,5 +1,5 @@
 <!-- TOC BEGIN -->
-**Table Of Contents**
+## Table Of Contents
 - [../gitHub](gitHub.md)
 - [Actions Quick Start](#actions-quick-start)
 - [Actions Troubleshooting](#actions-troubleshooting)

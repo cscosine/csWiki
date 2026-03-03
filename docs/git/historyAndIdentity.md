@@ -1,5 +1,5 @@
 <!-- TOC BEGIN -->
-**Table Of Contents**
+## Table Of Contents
 - [../git](git.md)
 - [🔥 Git History Rewrite Procedure (Clean Identity Reset)](#🔥-git-history-rewrite-procedure-(clean-identity-reset))
 <!-- TOC END -->

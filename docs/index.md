@@ -1,7 +1,7 @@
 # Welcome To The cscosine Wiki!
 
 <!-- TOC BEGIN -->
-**Table Of Contents**
+## Table Of Contents
 - [Main file index](index.md)
   - [Welcome To The cscosine Wiki!](index.md#welcome-to-the-cscosine-wiki!)
 - [Subfolder git](git/git.md)

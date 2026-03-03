@@ -1,5 +1,5 @@
 <!-- TOC BEGIN -->
-**Table Of Contents**
+## Table Of Contents
 - [../index](../index.md)
 - [Main file gitHub](gitHub.md)
   - [GitHub](gitHub.md#github)

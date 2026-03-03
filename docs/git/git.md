@@ -1,5 +1,5 @@
 <!-- TOC BEGIN -->
-**Table Of Contents**
+## Table Of Contents
 - [../index](../index.md)
 - [Main file git](git.md)
   - [📘 Git Mini Cheat Sheet](git.md#📘-git-mini-cheat-sheet)

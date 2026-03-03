@@ -562,7 +562,7 @@ def write_toc_file(node: TOCFile) -> Report:
     """
     report = Report()
 
-    lines = ["**Table Of Contents**"]
+    lines = ["## Table Of Contents"]
 
     for s in node.toc_entries:
         indent = "  " * s.level

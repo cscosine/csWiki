@@ -1,5 +1,5 @@
 <!-- TOC BEGIN -->
-**Table Of Contents**
+## Table Of Contents
 - [../git](git.md)
 - [✅ Recommended Repository-Only Git Identity Configuration](#✅-recommended-repository-only-git-identity-configuration)
 <!-- TOC END -->
