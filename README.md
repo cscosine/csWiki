@@ -19,16 +19,36 @@ Key principles:
 
 ## 📁 Repository Structure
 
-- `README.md` → This file
-- `docs/` → Folder containing all published documentation 
-  - `index.md` → **Mandatory main entry file**
-  - `_config.yml` → Jekyll configuration (mainly the `theme`)
-  - other files and subfolders...
-- `generateTOC.py` → Script that scans the `docs/` folder and automatically generates navigable TOC tables inside `.md` files
-- `.github/workflows/ci.yml` → CI pipeline enforcing formatting, linting, and type safety
-- `.pre-commit-config.yaml` → precommit hooks enforcing formatting, linting, and type safety
-- `.gitignore` → ignored files/folder/patterns by git
-- `.gitattributes` → specify type of files and avoid problems with CRLF/LF in Windows/Linux setup
+```
+csWiki/
+├── src/
+│   └── toc_generator/          # Reusable TOC generator package
+│       ├── __init__.py
+│       ├── cli.py              # Command-line interface
+│       ├── markdown_utils.py   # Markdown parsing and anchors
+│       ├── report.py           # Reporting system
+│       ├── tree.py             # Folder tree model and scanning
+│       ├── toc.py              # TOC tree construction
+│       └── writer.py           # TOC injection into files
+├── tests/                      # Pytest test suites (excluded from linting)
+│   ├── test_cli.py
+│   ├── test_markdown_utils.py
+│   ├── test_report.py
+│   ├── test_toc.py
+│   ├── test_tree.py
+│   └── test_writer.py
+├── docs/                       # Published documentation (Jekyll/GitHub Pages)
+│   ├── index.md                # **Mandatory main entry file**
+│   ├── _config.yml             # Jekyll configuration
+│   └── ...                     # Other .md files and subfolders
+├── generateTOC.py              # CLI entry point (thin wrapper)
+├── pyproject.toml              # Project metadata & tool configuration
+├── .pre-commit-config.yaml     # Pre-commit hooks
+├── .github/workflows/ci.yml    # GitHub Actions CI pipeline
+├── .gitignore                  # Git ignore patterns
+├── .gitattributes              # Git attributes for line endings
+└── README.md                   # This file
+```
 
 ---
 
@@ -52,8 +72,33 @@ Your Pages configuration should be:
 
 ## 🛠 Development Setup
 
+### ⚡ Quick Start
 
-### 🌍 Clone Repository
+```bash
+# 1. Clone repository
+git clone git@github.com:cscosine/csWiki.git
+cd csWiki
+
+# 2. Create virtual environment
+python -m venv .venv
+source .venv/bin/activate
+
+# 3. Install package in editable mode with dev dependencies
+pip install -e .[dev]
+
+# 4. Run tests directly (package is now importable)
+pytest
+
+# 5. Or use pre-commit hooks
+pre-commit install
+pre-commit run --all-files
+```
+
+### 🌍 Detailed Setup
+
+If you prefer step-by-step instructions:
+
+#### Clone Repository
 
 ``` bash
 git clone git@github.com:cscosine/csWiki.git
@@ -87,11 +132,22 @@ or for PowerShell
 .venv\Scripts\activate.ps1
 ```
 
-### Install Development Tools
+### Install Development Dependencies
 
-``` bash
-pip install black ruff mypy pre-commit
+All development tools are listed as optional dependencies in `pyproject.toml`:
+
+```bash
+pip install -e .[dev]
 ```
+
+This installs:
+- `pytest` — Testing framework
+- `mypy` — Static type checking
+- `ruff` — Linting and formatting
+- `black` — Code formatter
+- `pre-commit` — Git hook automation
+
+**Note:** The core package has **no runtime dependencies**; it only uses Python stdlib.
 
 ### Install Pre-Commit Hooks
 
@@ -204,79 +260,63 @@ If any check fails, the commit is blocked until the issues are resolved.
 
 ## 🧩 Reusable Module & Testing
 
-The TOC-generation logic is implemented into a
-small installable package under `toc_generator/`.
+The TOC-generation logic is a small, installable package in `src/toc_generator/`. This design allows the library to be used independently—either within this repo or published on PyPI.
 
-### Package structure
+### Package structure (src-layout)
 
 ```
-csWiki/
-├── toc_generator/
-│   ├── __init__.py           # primary API
-│   ├── cli.py                # command‑line driver
-│   ├── markdown_utils.py     # file parsing and anchor helpers
-│   ├── report.py             # lightweight reporting object
-│   ├── tree.py               # workspace scanning/data model
-│   ├── toc.py                # TOC tree builder & navigation logic
-│   └── writer.py             # inject TOC into files
-└── generateTOC.py            # thin wrapper that calls `toc_generator`
+src/toc_generator/
+├── __init__.py           # Public API exports
+├── cli.py                # Command-line entry point
+├── markdown_utils.py     # File parsing and anchor generation
+├── report.py             # Reporting and pretty-printing
+├── tree.py               # Folder/file tree model and scanning
+├── toc.py                # TOC tree construction and finalization
+└── writer.py             # TOC generation and file injection
 ```
 
-Consumers can now do e.g.::
+**Why src-layout?** It prevents import shadowing (ensures `import toc_generator` always loads the installed package, not a local directory) and makes the structure explicit.
 
+### Using the package
+
+After installation (`pip install -e .`), you can:
+
+1. **Use as a library:**
+
+    ```python
     from toc_generator import create_tree, create_toc_tree, write_toc_on_files
+    
+    root = create_tree(Path("./docs"), "index")
+    toc_tree = create_toc_tree(Path("./docs"), root.root)
+    write_toc_on_files(toc_tree)
+    ```
 
-and the same functionality can be published on PyPI or vendored elsewhere.
+2. **Use the CLI:**
+
+    ```bash
+    cstoc              # equivalent to ./generateTOC.py
+    cstoc --quiet      # suppress debug output
+    ```
 
 ### Running the tests
 
-A new `tests/` directory contains `pytest` suites covering each module.  To
-execute them locally use:
+The `tests/` directory contains pytest suites for each module (excluded from linting/type-checking).
 
 ```bash
-pip install pytest
+# After installation (`pip install -e .`):
 pytest
+
+# Or without installation, manually add src/:
+PYTHONPATH=src pytest
 ```
 
-The tests exercise the various parsing, tree‑building and file‑writing helpers
-and also include a minimal CLI smoke test.  This makes future refactoring much
-easier and ensures the library works independently of the repository layout.
+**How imports work:** A `conftest.py` file at the project root is automatically loaded by pytest before running tests. It adds `src/` to Python's import path, ensuring tests can find and import `toc_generator` correctly. This is a standard pytest pattern for src-layout projects and requires no special setup.
+
+All tests pass - the package works independently of the repository structure.
 
 ### Dependencies
 
-The core library has **no external runtime dependencies**; it only uses
-stdlib modules such as `pathlib`, `re` and `argparse`.  Development and CI
-requirements are listed as an optional group in `pyproject.toml`, so you can
-install them with::
+- **Runtime:** None (stdlib only)
+- **Development:** `pytest`, `mypy`, `ruff`, `black`, `pre-commit`
 
-    pip install -e .[dev]
-
-which will pull in `pytest`, `mypy`, `ruff`, `black` and anything else needed
-for tests and static analysis.  Production consumers need only `cswiki-toc`
-itself.
-
-### Running tests without setting PYTHONPATH
-
-After installing with `pip install -e .` in the workspace root you can run
-`pytest` directly; the package will be importable just like any other
-installed library.  The `PYTHONPATH=$PWD` hack is only needed when running
-against the code without installation.
-
-
-### `src/` layout rationale
-
-The code has been moved into `src/toc_generator` using the canonical
-"src" layout.  This pattern is common in Python projects because it:
-
-* prevents tests or other modules from importing the package using a
-  shadowed local directory (i.e. `import toc_generator` will always load
-  the installed package, not some subdirectory accidentally added to
-  `sys.path`).
-* makes it obvious where the actual importable code lives, which is
-  helpful when the repo also contains other tooling or top‑level scripts.
-
-If you execute the tests without installing the package, you'll need to
-add `src` to `PYTHONPATH` (the previous instructions already suggested
-`PYTHONPATH=$PWD pytest ...`).  After running `pip install -e .` the
-layout becomes completely transparent and you can simply run `pytest`.
-
+Install all with: `pip install -e .[dev]`
