@@ -26,6 +26,14 @@ git commit --amend -m "new message"
 ```
 
 ---
+## Origin
+
+```bash
+git remote add origin git@github.com:USER/REPO.git
+git remote add origin https://github.com/USER/REPO.git
+```
+
+---
 
 ## Push
 
