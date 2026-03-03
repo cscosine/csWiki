@@ -14,7 +14,7 @@ Inside the repo:
 
 ```bash
 git config user.name "Your Name"
-git config user.email "your.email@gmail.com"
+git config user.email "your.email@XXXX.com"
 ```
 
 ## Verify It
@@ -26,9 +26,22 @@ git config --local --list
 Or check what Git will actually use:
 
 ```bash
-git var GIT_AUTHOR_NAME
-git var GIT_AUTHOR_EMAIL
+git var -l
+git var GIT_COMMITTER_IDENT
+git var GIT_AUTHOR_IDENT
 ```
+
+---
+
+## Additional Useful Settings
+
+Those are ok to be global
+
+```bash
+git config --global color.ui=auto
+git config --global core.editor=nano
+```
+
 
 ---
 
