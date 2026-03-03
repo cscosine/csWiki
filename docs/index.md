@@ -21,3 +21,6 @@
     - [How To Create Wiki](gitHub/CreateWiki.md#how-to-create-wiki)
 <!-- TOC END -->
 
+## Repo source
+
+To access the repo, visit [https://github.com/cscosine/csWiki](https://github.com/cscosine/csWiki)
