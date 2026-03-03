@@ -200,3 +200,83 @@ If any check fails, the commit is blocked until the issues are resolved.
 -   Automate structure
 -   Enforce consistency
 -   Avoid manual maintenance
+---
+
+## 🧩 Reusable Module & Testing
+
+The TOC-generation logic is implemented into a
+small installable package under `toc_generator/`.
+
+### Package structure
+
+```
+csWiki/
+├── toc_generator/
+│   ├── __init__.py           # primary API
+│   ├── cli.py                # command‑line driver
+│   ├── markdown_utils.py     # file parsing and anchor helpers
+│   ├── report.py             # lightweight reporting object
+│   ├── tree.py               # workspace scanning/data model
+│   ├── toc.py                # TOC tree builder & navigation logic
+│   └── writer.py             # inject TOC into files
+└── generateTOC.py            # thin wrapper that calls `toc_generator`
+```
+
+Consumers can now do e.g.::
+
+    from toc_generator import create_tree, create_toc_tree, write_toc_on_files
+
+and the same functionality can be published on PyPI or vendored elsewhere.
+
+### Running the tests
+
+A new `tests/` directory contains `pytest` suites covering each module.  To
+execute them locally use:
+
+```bash
+pip install pytest
+pytest
+```
+
+The tests exercise the various parsing, tree‑building and file‑writing helpers
+and also include a minimal CLI smoke test.  This makes future refactoring much
+easier and ensures the library works independently of the repository layout.
+
+### Dependencies
+
+The core library has **no external runtime dependencies**; it only uses
+stdlib modules such as `pathlib`, `re` and `argparse`.  Development and CI
+requirements are listed as an optional group in `pyproject.toml`, so you can
+install them with::
+
+    pip install -e .[dev]
+
+which will pull in `pytest`, `mypy`, `ruff`, `black` and anything else needed
+for tests and static analysis.  Production consumers need only `cswiki-toc`
+itself.
+
+### Running tests without setting PYTHONPATH
+
+After installing with `pip install -e .` in the workspace root you can run
+`pytest` directly; the package will be importable just like any other
+installed library.  The `PYTHONPATH=$PWD` hack is only needed when running
+against the code without installation.
+
+
+### `src/` layout rationale
+
+The code has been moved into `src/toc_generator` using the canonical
+"src" layout.  This pattern is common in Python projects because it:
+
+* prevents tests or other modules from importing the package using a
+  shadowed local directory (i.e. `import toc_generator` will always load
+  the installed package, not some subdirectory accidentally added to
+  `sys.path`).
+* makes it obvious where the actual importable code lives, which is
+  helpful when the repo also contains other tooling or top‑level scripts.
+
+If you execute the tests without installing the package, you'll need to
+add `src` to `PYTHONPATH` (the previous instructions already suggested
+`PYTHONPATH=$PWD pytest ...`).  After running `pip install -e .` the
+layout becomes completely transparent and you can simply run `pytest`.
+
