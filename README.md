@@ -22,8 +22,8 @@ Key principles:
 - `README.md` → This file
 - `docs/` → Folder containing all published documentation 
   - `index.md` → **Mandatory main entry file**
+  - `_config.yml` → Jekyll configuration (mainly the `theme`)
   - other files and subfolders...
-- `.nojekyll` → Ensures GitHub Pages does not use Jekyll processing
 - `generateTOC.py` → Script that scans the `docs/` folder and automatically generates navigable TOC tables inside `.md` files
 - `.github/workflows/ci.yml` → CI pipeline enforcing formatting, linting, and type safety
 - `.pre-commit-config.yaml` → precommit hooks enforcing formatting, linting, and type safety
