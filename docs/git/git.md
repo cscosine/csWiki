@@ -202,6 +202,30 @@ git log --oneline --graph --decorate --all
 
 ---
 
+## Revert A File To Previous Commit
+
+Restore from previous commit
+```bash
+git checkout HEAD~1 -- <file_path>
+```
+
+Restores from a branch or tag
+```bash
+git checkout branch_or_tag -- <file_path>
+```
+
+Restores from the commit before the tip of main.
+```bash
+git checkout main~1 -- <file_path>
+```
+
+Restores from a commit via SHA
+```bash
+git checkout abc1234 -- <file_path>
+```
+
+---
+
 ## Reset
 
 ```bash
