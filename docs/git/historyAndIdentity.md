@@ -19,6 +19,7 @@ Force push is required.
 git clone --mirror git@github.com:USER/REPO.git
 cd REPO.git
 ```
+Note: a `mirror` is a full repo copy. It will clone in `REPO.git` folder.
 
 ---
 
@@ -35,7 +36,7 @@ Run:
 ```bash
 git filter-repo \
   --name-callback 'return b"Your Name"' \
-  --email-callback 'return b"your.email@gmail.com"' \
+  --email-callback 'return b"your.email@email.com"' \
   --commit-callback '
     commit.gpgsig = None
   '
@@ -72,10 +73,24 @@ Check signatures:
 ```bash
 git log --show-signature
 ```
+This should not have any `gpg: ...` line.
 
 ---
 
 ## 4️⃣ Force Push Clean History
+
+Re-add origin with:
+
+```bash
+git remote add origin git@github.com:USER/REPO.git
+```
+
+or
+```bash
+git remote add origin https://github.com/USER/REPO.git
+```
+
+and then 
 
 ```bash
 git push --force --all

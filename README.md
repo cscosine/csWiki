@@ -73,8 +73,9 @@ git clone https://github.com/cscosine/csWiki.git
 python -m venv .venv
 source .venv/bin/activate
 ```
+_Note_: You may need `python3` instead of `python`.
 
-(Windows)
+On Windows:
 
 ``` bash
 .venv\Scripts\activate
@@ -91,8 +92,6 @@ or for PowerShell
 ``` bash
 pip install black ruff mypy pre-commit
 ```
-
-_Note_: You may need `python3` instead of `python`.
 
 ### Install Pre-Commit Hooks
 

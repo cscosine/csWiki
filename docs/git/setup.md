@@ -14,7 +14,7 @@ Inside the repo:
 
 ```bash
 git config user.name "Your Name"
-git config user.email "your.email@XXXX.com"
+git config user.email "your.email@email.com"
 ```
 
 ## Verify It
