@@ -6,7 +6,7 @@
   - [Welcome To The cscosine Wiki!](index.md#welcome-to-the-cscosine-wiki!)
 - [Subfolder git](git/git.md)
   - [Main file git](git/git.md)
-    - [Git Mini Cheat Sheet](git/git.md#git-mini-cheat-sheet)
+    - [📘 Git Mini Cheat Sheet](git/git.md#📘-git-mini-cheat-sheet)
   - [File historyAndIdentity](git/historyAndIdentity.md)
     - [🔥 Git History Rewrite Procedure (Clean Identity Reset)](git/historyAndIdentity.md#🔥-git-history-rewrite-procedure-(clean-identity-reset))
   - [File setup](git/setup.md)
