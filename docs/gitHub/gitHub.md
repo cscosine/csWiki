@@ -1,7 +1,8 @@
 <!-- TOC BEGIN -->
 **Table Of Contents**
 - [../index](../index.md)
-- [GitHub](gitHub.md#github)
+- [Main file gitHub](gitHub.md)
+  - [GitHub](gitHub.md#github)
 - [File Actions](Actions.md)
   - [Actions Quick Start](Actions.md#actions-quick-start)
   - [Actions Troubleshooting](Actions.md#actions-troubleshooting)

@@ -416,12 +416,20 @@ def createTOCTreeImpl(rootPath: Path, node: FolderNode) -> TOCFolder:
     nodeTOC = TOCFolder(main_file_toc=TOCFile(file_full_path=rootPath / f"{node.main_filename}.md"))
 
     # ---- Folder own sections ----
+    nodeTOC.main_file_toc.toc_entries.append(
+        SectionWithAnchorAndLevel(
+            f"Main file {node.main_filename}",
+            Path(f"{node.main_filename}.md").as_posix(),
+            0,
+        )
+    )
+
     for section in node.main_file_sections:
         nodeTOC.main_file_toc.toc_entries.append(
             SectionWithAnchorAndLevel(
                 section.section,
                 f"{node.main_filename}.md#{section.anchor}",
-                0,
+                1,
             )
         )
 

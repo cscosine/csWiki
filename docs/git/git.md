@@ -1,7 +1,8 @@
 <!-- TOC BEGIN -->
 **Table Of Contents**
 - [../index](../index.md)
-- [Git Mini Cheat Sheet](git.md#git-mini-cheat-sheet)
+- [Main file git](git.md)
+  - [Git Mini Cheat Sheet](git.md#git-mini-cheat-sheet)
 - [File historyAndIdentity](historyAndIdentity.md)
   - [🔥 Git History Rewrite Procedure (Clean Identity Reset)](historyAndIdentity.md#🔥-git-history-rewrite-procedure-(clean-identity-reset))
 - [File setup](setup.md)
