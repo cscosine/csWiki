@@ -8,6 +8,8 @@
   - [Actions Troubleshooting](Actions.md#actions-troubleshooting)
 - [File CreateWiki](CreateWiki.md)
   - [How To Create Wiki](CreateWiki.md#how-to-create-wiki)
+- [File SSH-Keys](SSH-Keys.md)
+  - [Add an SSH Key to GitHub](SSH-Keys.md#add-an-ssh-key-to-github)
 <!-- TOC END -->
 
 # GitHub

@@ -19,6 +19,8 @@
     - [Actions Troubleshooting](gitHub/Actions.md#actions-troubleshooting)
   - [File CreateWiki](gitHub/CreateWiki.md)
     - [How To Create Wiki](gitHub/CreateWiki.md#how-to-create-wiki)
+  - [File SSH-Keys](gitHub/SSH-Keys.md)
+    - [Add an SSH Key to GitHub](gitHub/SSH-Keys.md#add-an-ssh-key-to-github)
 <!-- TOC END -->
 
 ## Repo source
