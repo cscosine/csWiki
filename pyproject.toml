@@ -7,7 +7,7 @@ name = "cswiki-toc"
 version = "0.1.0"
 description = "Recursive table-of-contents generator for markdown documentation"
 authors = [
-  { name = "Simone Ceriani", email = "simone.ceriani@gmail.com" }
+  { name = "cscosine-dev", email = "cscosine@gmail.com" }
 ]
 readme = "README.md"
 license = { text = "MIT" }
