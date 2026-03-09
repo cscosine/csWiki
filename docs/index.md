@@ -11,6 +11,8 @@
     - [🔥 Git History Rewrite Procedure (Clean Identity Reset)](git/historyAndIdentity.md#🔥-git-history-rewrite-procedure-(clean-identity-reset))
   - [File meldForMergeAndDiff](git/meldForMergeAndDiff.md)
     - [Setup Meld as Default Git Merge Tool on Ubuntu/Debian](git/meldForMergeAndDiff.md#setup-meld-as-default-git-merge-tool-on-ubuntu/debian)
+  - [File multiAccount](git/multiAccount.md)
+    - [Multi-Account GitHub SSH Setup (Clean and Safe)](git/multiAccount.md#multi-account-github-ssh-setup-(clean-and-safe))
   - [File setup](git/setup.md)
     - [✅ Recommended Repository-Only Git Identity Configuration](git/setup.md#✅-recommended-repository-only-git-identity-configuration)
 - [Subfolder gitHub](gitHub/gitHub.md)

@@ -7,6 +7,8 @@
   - [🔥 Git History Rewrite Procedure (Clean Identity Reset)](historyAndIdentity.md#🔥-git-history-rewrite-procedure-(clean-identity-reset))
 - [File meldForMergeAndDiff](meldForMergeAndDiff.md)
   - [Setup Meld as Default Git Merge Tool on Ubuntu/Debian](meldForMergeAndDiff.md#setup-meld-as-default-git-merge-tool-on-ubuntu/debian)
+- [File multiAccount](multiAccount.md)
+  - [Multi-Account GitHub SSH Setup (Clean and Safe)](multiAccount.md#multi-account-github-ssh-setup-(clean-and-safe))
 - [File setup](setup.md)
   - [✅ Recommended Repository-Only Git Identity Configuration](setup.md#✅-recommended-repository-only-git-identity-configuration)
 <!-- TOC END -->
@@ -29,6 +31,8 @@ git commit --amend -m "new message"
 
 ---
 ## Origin
+
+_note_: see also [Multi-Account GitHub SSH Setup (Clean and Safe)](multiAccount.md#multi-account-github-ssh-setup-(clean-and-safe)) if you want to setup properly multiple accounts on the same machine
 
 ```bash
 git remote add origin git@github.com:USER/REPO.git

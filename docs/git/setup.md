@@ -8,6 +8,8 @@
 
 This ensures your email/name are set **per repository only**, NOT globally.
 
+_note_: see also [Multi-Account GitHub SSH Setup (Clean and Safe)](multiAccount.md#multi-account-github-ssh-setup-(clean-and-safe)) if you want to setup properly multiple accounts on the same machine
+
 ## Set Identity for One Repository
 
 Inside the repo:

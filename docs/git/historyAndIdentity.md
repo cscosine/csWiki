@@ -81,6 +81,8 @@ This should not have any `gpg: ...` line.
 
 Re-add origin with:
 
+_note_: see also [Multi-Account GitHub SSH Setup (Clean and Safe)](multiAccount.md#multi-account-github-ssh-setup-(clean-and-safe)) if you want to setup properly multiple accounts on the same machine
+
 ```bash
 git remote add origin git@github.com:USER/REPO.git
 ```
