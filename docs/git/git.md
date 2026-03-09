@@ -5,6 +5,8 @@
   - [📘 Git Mini Cheat Sheet](git.md#📘-git-mini-cheat-sheet)
 - [File historyAndIdentity](historyAndIdentity.md)
   - [🔥 Git History Rewrite Procedure (Clean Identity Reset)](historyAndIdentity.md#🔥-git-history-rewrite-procedure-(clean-identity-reset))
+- [File meldForMergeAndDiff](meldForMergeAndDiff.md)
+  - [Setup Meld as Default Git Merge Tool on Ubuntu/Debian](meldForMergeAndDiff.md#setup-meld-as-default-git-merge-tool-on-ubuntu/debian)
 - [File setup](setup.md)
   - [✅ Recommended Repository-Only Git Identity Configuration](setup.md#✅-recommended-repository-only-git-identity-configuration)
 <!-- TOC END -->
