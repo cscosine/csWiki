@@ -9,6 +9,8 @@
   - [Setup Meld as Default Git Merge Tool on Ubuntu/Debian](meldForMergeAndDiff.md#setup-meld-as-default-git-merge-tool-on-ubuntu/debian)
 - [File multiAccount](multiAccount.md)
   - [Multi-Account GitHub SSH Setup (Clean and Safe)](multiAccount.md#multi-account-github-ssh-setup-(clean-and-safe))
+- [File multiAccount-detailed](multiAccount-detailed.md)
+  - [Clean SSH + Git Multi-Account Setup (Delete Everything and Start Fresh)](multiAccount-detailed.md#clean-ssh-+-git-multi-account-setup-(delete-everything-and-start-fresh))
 - [File setup](setup.md)
   - [✅ Recommended Repository-Only Git Identity Configuration](setup.md#✅-recommended-repository-only-git-identity-configuration)
 <!-- TOC END -->
