@@ -146,11 +146,11 @@ pip install -e .[dev]
 ```
 
 This installs:
-- `pytest` — Testing framework
-- `mypy` — Static type checking
-- `ruff` — Linting and formatting
-- `black` — Code formatter
-- `pre-commit` — Git hook automation
+- `pytest` - Testing framework
+- `mypy` - Static type checking
+- `ruff` - Linting and formatting
+- `black` - Code formatter
+- `pre-commit` - Git hook automation
 
 **Note:** The core package has **no runtime dependencies**; it only uses Python stdlib.
 
@@ -265,7 +265,7 @@ If any check fails, the commit is blocked until the issues are resolved.
 
 ## 🧩 Reusable Module & Testing
 
-The TOC-generation logic is a small, installable package in `src/toc_generator/`. This design allows the library to be used independently—either within this repo or published on PyPI.
+The TOC-generation logic is a small, installable package in `src/toc_generator/`. This design allows the library to be used independently-either within this repo or published on PyPI.
 
 ### Package structure (src-layout)
 

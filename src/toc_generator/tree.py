@@ -116,7 +116,7 @@ def find_subfolders(folder: Path) -> FindSubFoldersResult:
         if expected_md.is_file():
             result.paths.append(sub.relative_to(folder))
         else:
-            result.report.warnings.append(f"Ignoring folder `{sub}` — missing `{sub.name}.md`")
+            result.report.warnings.append(f"Ignoring folder `{sub}` - missing `{sub.name}.md`")
 
     return result
 

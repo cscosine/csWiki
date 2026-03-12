@@ -34,7 +34,7 @@ dev = [
 ]
 
 # ===============================
-# Black — Code Formatter
+# Black - Code Formatter
 # ===============================
 [tool.black]
 
@@ -47,7 +47,7 @@ target-version = ["py311"]
 
 
 # ===============================
-# Ruff — Linter + Formatter
+# Ruff - Linter + Formatter
 # ===============================
 [tool.ruff]
 
@@ -72,7 +72,7 @@ select = ["E", "F", "I", "B"]
 quote-style = "double"
 
 # ===============================
-# MyPy — Static Type Checker
+# MyPy - Static Type Checker
 # ===============================
 [tool.mypy]
 

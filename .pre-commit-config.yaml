@@ -3,11 +3,12 @@ repos:
     hooks:
       - id: generate-toc
         name: Generate TOC
-        entry: python generateTOC.py --quiet
-        language: system
+        entry: cstoc --quiet
+        language: python
+        additional_dependencies:
+          - ".[dev]"
         pass_filenames: false
         always_run: true
-        verbose: true
 
   - repo: https://github.com/psf/black
     rev: 24.3.0
