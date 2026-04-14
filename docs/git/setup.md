@@ -40,8 +40,8 @@ git var GIT_AUTHOR_IDENT
 Those are ok to be global
 
 ```bash
-git config --global color.ui=auto
-git config --global core.editor=nano
+git config --global color.ui "auto"
+git config --global core.editor "nano"
 ```
 
 
