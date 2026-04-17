@@ -1,7 +1,6 @@
 <!-- TOC BEGIN -->
 ## Table Of Contents
 - [../gitHub](gitHub.md)
-- [Add an SSH Key to GitHub](#add-an-ssh-key-to-github)
 <!-- TOC END -->
 
 # Add an SSH Key to GitHub

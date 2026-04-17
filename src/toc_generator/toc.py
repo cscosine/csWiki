@@ -54,20 +54,13 @@ def create_toc_tree_impl(rootPath: Path, node: FolderNode) -> TOCFolder:
     nodeTOC = TOCFolder(main_file_toc=TOCFile(file_full_path=rootPath / f"{node.main_filename}.md"))
 
     # ---- Folder own sections ----
-    nodeTOC.main_file_toc.toc_entries.append(
-        SectionWithAnchorAndLevel(
-            f"Main file {node.main_filename}",
-            Path(f"{node.main_filename}.md").as_posix(),
-            0,
-        )
-    )
 
     for section in node.main_file_sections:
         nodeTOC.main_file_toc.toc_entries.append(
             SectionWithAnchorAndLevel(
                 section.section,
                 f"{node.main_filename}.md#{section.anchor}",
-                1,
+                0,
             )
         )
 
@@ -103,28 +96,12 @@ def create_toc_tree_impl(rootPath: Path, node: FolderNode) -> TOCFolder:
     for nf in node.files:
         sTOC_file_node = TOCFile(file_full_path=rootPath / f"{nf.file_name}.md")
 
-        nodeTOC.main_file_toc.toc_entries.append(
-            SectionWithAnchorAndLevel(
-                f"File {nf.file_name}",
-                f"{nf.file_name}.md",
-                0,
-            )
-        )
-
         for s in nf.file_sections:
-            sTOC_file_node.toc_entries.append(
-                SectionWithAnchorAndLevel(
-                    s.section,
-                    f"#{s.anchor}",
-                    0,
-                )
-            )
-
             nodeTOC.main_file_toc.toc_entries.append(
                 SectionWithAnchorAndLevel(
                     s.section,
                     f"{nf.file_name}.md#{s.anchor}",
-                    1,
+                    0,
                 )
             )
 
