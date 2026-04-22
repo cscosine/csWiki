@@ -84,6 +84,10 @@ cd csWiki
 python3.XX -m venv .venv # 3.XX >= 3.11
 source .venv/bin/activate
 
+# or on Windows for Powershell
+.venv\Scripts\activate.ps1
+
+
 # 3. Install package in editable mode with dev dependencies
 pip install -e .[dev]
 
