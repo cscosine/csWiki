@@ -77,7 +77,7 @@ def create_toc_tree_impl(rootPath: Path, node: FolderNode) -> TOCFolder:
 
         subfoldersToc.append(
             SectionWithAnchorAndLevel(
-                f"Subfolder {subfolder.folder_name}",
+                f"{subfolder.folder_name}",
                 Path(subfolder.folder_name / f"{subfolder.main_filename}.md").as_posix(),
                 0,
             )
