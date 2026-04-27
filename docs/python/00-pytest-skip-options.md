@@ -72,3 +72,45 @@ pytest -m "not slow"
 pytest -k "fast"
 # -k filters by test names (runs tests whose names contain "fast")
 ```
+
+## 📌 Multiple markers (tags)
+
+You can assign more than one marker to a test, and combine them using `-m`.
+
+### 📄 Example: multiple markers on a test
+
+```python
+import pytest
+
+@pytest.mark.slow
+@pytest.mark.git
+def test_something():
+    assert True
+```
+
+### 📄 Register markers (pyproject.toml)
+
+```bash
+[tool.pytest.ini_options]
+markers = [
+  "slow: marks tests as slow",
+  "git: marks tests that require git",
+]
+```
+
+### ▶️ Running tests with multiple markers
+
+```bash
+# run tests that are BOTH slow AND git-related
+pytest -m "slow and git"
+
+# run tests that are slow OR git-related
+pytest -m "slow or git"
+
+# exclude multiple markers
+pytest -m "not slow and not git"
+```
+
+### 💡 Tip
+
+Markers can be freely combined using boolean logic (`and`, `or`, `not`, parentheses).
