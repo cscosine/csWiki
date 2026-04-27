@@ -16,6 +16,8 @@
   - [Actions Troubleshooting](gitHub/Actions.md#actions-troubleshooting)
   - [How To Create Wiki](gitHub/CreateWiki.md#how-to-create-wiki)
   - [Add an SSH Key to GitHub](gitHub/SSH-Keys.md#add-an-ssh-key-to-github)
+- [Subfolder python](python/python.md)
+  - [Configure pytest to skip some tests (e.g. _slow_)](python/00-pytest-skip-options.md#configure-pytest-to-skip-some-tests-(e.g.-_slow_))
 <!-- TOC END -->
 
 ## Repo source
