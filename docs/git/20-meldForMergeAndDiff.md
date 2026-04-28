@@ -1,6 +1,7 @@
 <!-- TOC BEGIN -->
 ## Table Of Contents
-- [../git](git.md)
+- [← Back : git](git.md)
+- [Setup Meld as Default Git Merge Tool on Ubuntu/Debian](#setup-meld-as-default-git-merge-tool-on-ubuntu/debian)
 <!-- TOC END -->
 
 # Setup Meld as Default Git Merge Tool on Ubuntu/Debian

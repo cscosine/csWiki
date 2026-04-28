@@ -1,6 +1,6 @@
 <!-- TOC BEGIN -->
 ## Table Of Contents
-- [../index](../index.md)
+- [← Back : index](../index.md)
 - [📘 Git Mini Cheat Sheet](00-gitMiniCheatSheet.md#📘-git-mini-cheat-sheet)
 - [✅ Recommended Repository-Only Git Identity Configuration](10-setup.md#✅-recommended-repository-only-git-identity-configuration)
 - [Partial commit workflow with stash (clean working tree)](15-gitStash.md#partial-commit-workflow-with-stash-(clean-working-tree))

@@ -1,6 +1,7 @@
 <!-- TOC BEGIN -->
 ## Table Of Contents
-- [../python](python.md)
+- [← Back : python](python.md)
+- [Setup VS Code to Use Python Efficiently](#setup-vs-code-to-use-python-efficiently)
 <!-- TOC END -->
 
 # Setup VS Code to Use Python Efficiently

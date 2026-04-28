@@ -1,6 +1,7 @@
 <!-- TOC BEGIN -->
 ## Table Of Contents
-- [../git](git.md)
+- [← Back : git](git.md)
+- [✅ Recommended Repository-Only Git Identity Configuration](#✅-recommended-repository-only-git-identity-configuration)
 <!-- TOC END -->
 
 # ✅ Recommended Repository-Only Git Identity Configuration

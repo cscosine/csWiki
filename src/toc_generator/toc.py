@@ -97,6 +97,14 @@ def create_toc_tree_impl(rootPath: Path, node: FolderNode) -> TOCFolder:
         sTOC_file_node = TOCFile(file_full_path=rootPath / f"{nf.file_name}.md")
 
         for s in nf.file_sections:
+            sTOC_file_node.toc_entries.append(
+                SectionWithAnchorAndLevel(
+                    s.section,
+                    f"#{s.anchor}",
+                    0,
+                )
+            )
+
             nodeTOC.main_file_toc.toc_entries.append(
                 SectionWithAnchorAndLevel(
                     s.section,
@@ -126,14 +134,14 @@ def finalize_toc_tree(node: TOCFolder, parent: Optional[TOCFolder]) -> None:
 
     if parent is not None:
         parentEntry = SectionWithAnchorAndLevel(
-            f"../{parent.main_file_toc.file_full_path.stem}",
+            f"← Back : {parent.main_file_toc.file_full_path.stem}",
             f"../{parent.main_file_toc.file_full_path.name}",
             0,
         )
         node.main_file_toc.toc_entries = [parentEntry] + node.main_file_toc.toc_entries
 
     parentEntry = SectionWithAnchorAndLevel(
-        f"../{node.main_file_toc.file_full_path.stem}",
+        f"← Back : {node.main_file_toc.file_full_path.stem}",
         f"{node.main_file_toc.file_full_path.name}",
         0,
     )

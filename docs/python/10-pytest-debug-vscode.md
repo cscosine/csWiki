@@ -1,6 +1,7 @@
 <!-- TOC BEGIN -->
 ## Table Of Contents
-- [../python](python.md)
+- [← Back : python](python.md)
+- [Debugging pytest in VS Code](#debugging-pytest-in-vs-code)
 <!-- TOC END -->
 
 # Debugging pytest in VS Code

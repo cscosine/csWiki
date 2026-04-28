@@ -1,6 +1,7 @@
 <!-- TOC BEGIN -->
 ## Table Of Contents
-- [../git](git.md)
+- [← Back : git](git.md)
+- [Multi-Account GitHub SSH Setup (Clean and Safe)](#multi-account-github-ssh-setup-(clean-and-safe))
 <!-- TOC END -->
 
 # Multi-Account GitHub SSH Setup (Clean and Safe)

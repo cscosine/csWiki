@@ -1,6 +1,7 @@
 <!-- TOC BEGIN -->
 ## Table Of Contents
-- [../python](python.md)
+- [← Back : python](python.md)
+- [Configure pytest to skip some tests (e.g. _slow_)](#configure-pytest-to-skip-some-tests-(e.g.-_slow_))
 <!-- TOC END -->
 
 # Configure pytest to skip some tests (e.g. _slow_)

@@ -1,6 +1,7 @@
 <!-- TOC BEGIN -->
 ## Table Of Contents
-- [../git](git.md)
+- [← Back : git](git.md)
+- [Partial commit workflow with stash (clean working tree)](#partial-commit-workflow-with-stash-(clean-working-tree))
 <!-- TOC END -->
 
 # Partial commit workflow with stash (clean working tree)

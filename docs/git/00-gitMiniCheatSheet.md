@@ -1,6 +1,7 @@
 <!-- TOC BEGIN -->
 ## Table Of Contents
-- [../git](git.md)
+- [← Back : git](git.md)
+- [📘 Git Mini Cheat Sheet](#📘-git-mini-cheat-sheet)
 <!-- TOC END -->
 
 # 📘 Git Mini Cheat Sheet

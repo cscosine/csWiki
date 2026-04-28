@@ -1,6 +1,7 @@
 <!-- TOC BEGIN -->
 ## Table Of Contents
-- [../git](git.md)
+- [← Back : git](git.md)
+- [Clean SSH + Git Multi-Account Setup (Delete Everything and Start Fresh)](#clean-ssh-+-git-multi-account-setup-(delete-everything-and-start-fresh))
 <!-- TOC END -->
 
 # Clean SSH + Git Multi-Account Setup (Delete Everything and Start Fresh)
