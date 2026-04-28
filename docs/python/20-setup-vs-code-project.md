@@ -103,19 +103,46 @@ All configuration lives in:
     {
       "label": "Create venv",
       "type": "shell",
-      "command": "python -m venv .venv"
+      "command": "python -m venv .venv",
+      "problemMatcher": []
     },
     {
       "label": "Install deps",
       "type": "shell",
-      "command": "${command:python.interpreterPath} -m pip install -e .[dev]"
+      "command": "${command:python.interpreterPath} -m pip install -e .[dev]",
+      "problemMatcher": []
+    },
+    {
+      "label": "Pre-commit install",
+      "type": "shell",
+      "command": "pre-commit install",
+      "problemMatcher": []
+    },
+    {
+      "label": "Pre-commit run (all files)",
+      "type": "shell",
+      "command": "pre-commit run --all-files",
+      "problemMatcher": []
+    },
+    {
+      "label": "Setup Project",
+      "dependsOn": [
+        "Create venv",
+        "Install deps",
+        "Pre-commit install",
+        "Pre-commit run (all files)"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
     }
   ]
 }
 ```
 
-* Used for environment setup and dependency installation
-* Cross-platform (Windows/Linux/macOS)
+* Used for full project bootstrap (virtual environment setup, dependency installation, and pre-commit initialization)
+* Includes automated code quality checks via pre-commit hooks
+* Cross-platform (Windows, Linux, macOS)
+* Supports a single “Setup Project” task to run the entire environment setup in sequence
 
 ---
 
