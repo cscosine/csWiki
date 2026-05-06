@@ -9,4 +9,3 @@
 - [Clean SSH + Git Multi-Account Setup (Delete Everything and Start Fresh)](40-multiAccount-detailed.md#clean-ssh-+-git-multi-account-setup-(delete-everything-and-start-fresh))
 - [🔥 Git History Rewrite Procedure (Clean Identity Reset)](50-historyAndIdentity.md#🔥-git-history-rewrite-procedure-(clean-identity-reset))
 <!-- TOC END -->
-

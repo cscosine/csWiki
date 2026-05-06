@@ -23,25 +23,12 @@ cstoc = "toc_generator.cli:main"
 [project.optional-dependencies]
 # development tools (tests, linting, type checking)
 dev = [
-    "pytest",
-    "mypy",
-    "ruff",
-    "black",
-    "pre-commit"
+    "pytest>=9",
+    "pytest-cov>=7",
+    "mypy>=1.0",
+    "ruff>=0.4",
+    "pre-commit>=4",
 ]
-
-# ===============================
-# Black - Code Formatter
-# ===============================
-[tool.black]
-
-# Maximum line length before Black wraps code.
-line-length = 120
-
-# Python versions Black should format for.
-# This enables formatting that is compatible with Python 3.11 syntax.
-target-version = ["py311"]
-
 
 # ===============================
 # Ruff - Linter + Formatter
@@ -49,7 +36,6 @@ target-version = ["py311"]
 [tool.ruff]
 
 # Maximum allowed line length for linting.
-# Keep it consistent with Black to avoid conflicts.
 line-length = 120
 
 # Target Python version for rule selection / parsing.
@@ -88,11 +74,6 @@ strict = true
 # Ignore missing type hints in third-party libraries.
 # Many libraries don't ship with typing, so this avoids noise.
 ignore_missing_imports = true
-
-# Exclude test files from type checking
-exclude = [
-    "^tests/",
-]
 
 # Treat src/ as a real package root. Do not auto-guess.
 explicit_package_bases = true

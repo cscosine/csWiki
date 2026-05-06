@@ -1,4 +1,7 @@
-def test_report_append_and_print(capfd):
+import pytest
+
+
+def test_report_append_and_print(capfd: pytest.CaptureFixture[str]) -> None:
     from toc_generator.report import Report
 
     r1 = Report()

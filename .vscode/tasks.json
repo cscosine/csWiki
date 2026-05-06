@@ -1,0 +1,58 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Create venv",
+      "type": "shell",
+      "command": "python -m venv .venv",
+      "problemMatcher": [],
+      "detail": "#Setup # Create a virtual environment in the project directory"
+    },
+    {
+      "label": "Install deps",
+      "type": "shell",
+      "command": "${command:python.interpreterPath} -m pip install -e .[dev]",
+      "problemMatcher": [],
+      "detail": "#Setup # Install development dependencies"
+    },
+    {
+      "label": "Pre-commit install",
+      "type": "shell",
+      "command": "pre-commit install",
+      "problemMatcher": [],
+      "detail": "#Setup # Install pre-commit hooks"
+    },
+    {
+      "label": "Pre-commit run (all files)",
+      "type": "shell",
+      "command": "pre-commit run --all-files",
+      "problemMatcher": [],
+      "detail": "#Pre-Commit # Run pre-commit hooks on all files"
+    },
+    {
+      "label": "Setup Project",
+      "dependsOn": [
+        "Create venv",
+        "Install deps",
+        "Pre-commit install"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": [],
+      "detail": "#Setup # Do all steps to set up the project (create venv, install dependencies, set up pre-commit hooks)"
+    },
+    {
+      "label": "Pytest",
+      "type": "shell",
+      "command": "${command:python.interpreterPath} -m pytest",
+      "problemMatcher": [],
+      "detail": "#Testing # Run pytest (fast)"
+    },
+    {
+      "label": "Pytest (coverage)",
+      "type": "shell",
+      "command": "${command:python.interpreterPath} -m pytest --cov=toc_generator --cov-branch --cov-report=html",
+      "problemMatcher": [],
+      "detail": "#Testing # Run pytest with coverage"
+    }
+  ]
+}

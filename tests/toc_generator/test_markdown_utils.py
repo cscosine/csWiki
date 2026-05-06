@@ -3,7 +3,7 @@ from pathlib import Path
 from toc_generator import markdown_utils as mu
 
 
-def test_extract_level1_sections_and_ignore_code():
+def test_extract_level1_sections_and_ignore_code() -> None:
     content = """
 # First
 Some text
@@ -16,14 +16,14 @@ Some text
     assert sections == ["First", "Second"]
 
 
-def test_replace_toc_missing_markers():
+def test_replace_toc_missing_markers() -> None:
     content = "no markers here"
     updated, ok = mu.replace_toc(content, "foo")
     assert not ok
     assert updated == content
 
 
-def test_replace_toc_success(tmp_path: Path):
+def test_replace_toc_success(tmp_path: Path) -> None:
     file = tmp_path / "doc.md"
     file.write_text("line1\n<!-- TOC BEGIN -->\nold\n<!-- TOC END -->\nline2")
     content = file.read_text()
@@ -32,7 +32,7 @@ def test_replace_toc_success(tmp_path: Path):
     assert "newtoc" in updated
 
 
-def test_section_anchor_helpers():
+def test_section_anchor_helpers() -> None:
     s = "My Section"
     anchor = mu.section_to_anchor(s)
     assert anchor.section == s

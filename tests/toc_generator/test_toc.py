@@ -4,7 +4,7 @@ from toc_generator import toc
 from toc_generator.tree import FolderNode
 
 
-def make_dummy_foldernode():
+def make_dummy_foldernode() -> FolderNode:
     root = FolderNode(folder_name=Path(""), main_filename="index")
     root.main_file_sections = []
     # add one file
@@ -13,7 +13,7 @@ def make_dummy_foldernode():
     return root
 
 
-def test_toc_tree_basic(tmp_path: Path):
+def test_toc_tree_basic(tmp_path: Path) -> None:
     rootdir = tmp_path / "docs"
     rootdir.mkdir()
     # create files on filesystem only to compute paths later

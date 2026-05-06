@@ -294,7 +294,7 @@ After installation (`pip install -e .`), you can:
 
     ```python
     from toc_generator import create_tree, create_toc_tree, write_toc_on_files
-    
+
     root = create_tree(Path("./docs"), "index")
     toc_tree = create_toc_tree(Path("./docs"), root.root)
     write_toc_on_files(toc_tree)

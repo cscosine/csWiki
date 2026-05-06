@@ -6,7 +6,7 @@
 
 # Clean SSH + Git Multi-Account Setup (Delete Everything and Start Fresh)
 
-This guide resets all SSH keys and rebuilds a clean **multi-account Git setup** (e.g., personal + work).  
+This guide resets all SSH keys and rebuilds a clean **multi-account Git setup** (e.g., personal + work).
 It also includes how to **verify and fix repository remotes** to ensure the correct SSH identity is used.
 
 ---

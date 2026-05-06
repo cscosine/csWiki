@@ -1,9 +1,12 @@
+import os
 from pathlib import Path
+
+import pytest
 
 from toc_generator import cli
 
 
-def test_cli_no_docs(tmp_path: Path, capsys):
+def test_cli_no_docs(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
     # run the CLI in an empty directory, should produce an error but return 1
     cwd = tmp_path / "empty"
     cwd.mkdir()
@@ -11,7 +14,6 @@ def test_cli_no_docs(tmp_path: Path, capsys):
     (cwd / "docs").mkdir()
 
     # monkeypatch cwd
-    import os
 
     oldcwd = os.getcwd()
     try:

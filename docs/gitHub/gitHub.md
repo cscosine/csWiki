@@ -11,4 +11,3 @@
 # GitHub
 
 This page contains notes, tips&tricks, etc. about GitHub
-

@@ -41,7 +41,7 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 
 Explanation:
 
-- `-t ed25519` → modern secure key type  
+- `-t ed25519` → modern secure key type
 - `-C` → comment (usually your GitHub email)
 
 You’ll see prompts like:

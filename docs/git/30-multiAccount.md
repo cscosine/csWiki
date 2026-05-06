@@ -63,16 +63,16 @@ cat ~/.ssh/id_ed25519_organization.pub
 
 Add them to GitHub:
 
-Account `personal_name`  
-Settings → SSH and GPG keys → New SSH key  
+Account `personal_name`
+Settings → SSH and GPG keys → New SSH key
 Paste:
 
 ```
 id_ed25519_personal.pub
 ```
 
-Account `organization_name`  
-Settings → SSH and GPG keys → New SSH key  
+Account `organization_name`
+Settings → SSH and GPG keys → New SSH key
 Paste:
 
 ```

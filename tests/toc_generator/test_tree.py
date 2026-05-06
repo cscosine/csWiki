@@ -1,13 +1,15 @@
 from pathlib import Path
 
+import pytest
+
 from toc_generator import tree
 
 
-def make_file(path: Path, text: str):
+def make_file(path: Path, text: str) -> None:
     path.write_text(text)
 
 
-def test_find_markdown_files(tmp_path: Path):
+def test_find_markdown_files(tmp_path: Path) -> None:
     d = tmp_path
     (d / "a.md").write_text("# A")
     (d / "b.md").write_text("# B")
@@ -15,7 +17,7 @@ def test_find_markdown_files(tmp_path: Path):
     assert files == ["b"]
 
 
-def test_find_subfolders(tmp_path: Path, capsys):
+def test_find_subfolders(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
     # create good and bad subfolders
     good = tmp_path / "good"
     bad = tmp_path / "bad"
@@ -32,7 +34,7 @@ def test_find_subfolders(tmp_path: Path, capsys):
     assert any("missing" in msg for msg in res.report.warnings)
 
 
-def test_create_tree(tmp_path: Path):
+def test_create_tree(tmp_path: Path) -> None:
     # build simple hierarchy
     root = tmp_path / "docs"
     root.mkdir()

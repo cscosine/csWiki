@@ -23,7 +23,7 @@
 
 ---
 
-## Debugging pytest 
+## Debugging pytest
 The most reliable way to debug pytest in VS Code is using a launch configuration.
 
 Create or edit:

@@ -92,7 +92,7 @@ or
 git remote add origin https://github.com/USER/REPO.git
 ```
 
-and then 
+and then
 
 ```bash
 git push --force --all
