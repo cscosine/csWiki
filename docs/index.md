@@ -17,6 +17,8 @@
   - [Actions Troubleshooting](gitHub/Actions.md#actions-troubleshooting)
   - [How To Create Wiki](gitHub/CreateWiki.md#how-to-create-wiki)
   - [Add an SSH Key to GitHub](gitHub/SSH-Keys.md#add-an-ssh-key-to-github)
+- [pre-commit](pre-commit/pre-commit.md)
+  - [pre-commit (quick start)](pre-commit/00-pre-commit-quick.md#pre-commit-(quick-start))
 - [python](python/python.md)
   - [Configure pytest to skip some tests (e.g. _slow_)](python/00-pytest-skip-options.md#configure-pytest-to-skip-some-tests-(e.g.-_slow_))
   - [Debugging pytest in VS Code](python/10-pytest-debug-vscode.md#debugging-pytest-in-vs-code)
