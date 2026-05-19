@@ -23,6 +23,8 @@
   - [Configure pytest to skip some tests (e.g. _slow_)](python/00-pytest-skip-options.md#configure-pytest-to-skip-some-tests-(e.g.-_slow_))
   - [Debugging pytest in VS Code](python/10-pytest-debug-vscode.md#debugging-pytest-in-vs-code)
   - [Setup VS Code to Use Python Efficiently](python/20-setup-vs-code-project.md#setup-vs-code-to-use-python-efficiently)
+- [vscode](vscode/vscode.md)
+  - [Source Control - Repositories: Settings](vscode/50-RepositoriesSettings.md#source-control---repositories:-settings)
 <!-- TOC END -->
 
 ## Repo source
