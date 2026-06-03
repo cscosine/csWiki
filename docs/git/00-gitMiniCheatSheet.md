@@ -185,6 +185,11 @@ git tag -d $TAG
 git push origin --delete $TAG
 ```
 
+Quick command to delete a tag locally and remote, and add the same tag to current location
+```
+git tag -d $TAG; git push origin --delete $TAG; git tag $TAG; git push origin $TAG
+```
+
 ---
 
 ## Log & Status
