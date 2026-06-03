@@ -103,10 +103,70 @@ https://creativecommons.org/licenses/by-nc-sa/3.0/
   - Note: untracked (new) files are not added by default
   - Rename: normally detected automatically if file content is similar
 
-**TODO**: continue from https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
+- Branching
+
+  - a `branch` is just a label attached to a commit (SHA)
+  - it does not exist any special branch / branch name
+  - a `branch` can be created everywhere
+
+    - e.g. I can get the very first commit and attach a label (`branch`) `restartFromScratch` and branch out from there
+
+  - `branch`es are convenient way of organizing work
+
+    - different contributors
+    - different efforts / features (e.g. `add-tests` `new-app`)
+
+  - branch can be deleted, commits remains (with some caveats - delete a `leaf branch` is a bit dangerous )
+
+  - `HEAD` is a special reference, it tells you what is the status of your working dir
+
+## Branches and Branching
+
+  *images from https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell*
+
+  Note: history goes left (older) to right (newer) - arrows are somehow misleading, they indicate the parent commit
+
+  - we are on `master` and we create a branch `testing`:
+
+    - two labels attached to the same commit,
+    - `HEAD` is on `master`, our current active branch
+
+    ![Git File Status](images/git-branches-02.png)
+
+  - we switch active branch to `testing` (`checkout`)
+
+    - `HEAD` is on `testing`
+
+    ![Git File Status](images/git-branches-03.png)
+
+  - we do some work and we commit
+
+    - `HEAD` is on `testing`, on a new commit
+
+    ![Git File Status](images/git-branches-04.png)
+
+  - we `checkout` again `master`
+
+    - `HEAD` is on `master`, our current active branch
+    - `testing` is stored, no risk
+
+    ![Git File Status](images/git-branches-05.png)
+
+  - we do some work and we commit
+
+    - `HEAD` is on `master`, on a new commit,
+    - and now is clear why we call it `branch`
+
+    ![Git File Status](images/git-branches-06.png)
+
+*Note*: omitting `DETACHED_HEAD` cases, not really interesting...
+
+## Practical
 
 ## Setup
 
 Not going to a full setup guide here, but only through concepts
 
 - git requires you to provide a `name` and an `email` to annotate your commits
+
+**TODO**: continue from https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History, note 3.1 branching already done
