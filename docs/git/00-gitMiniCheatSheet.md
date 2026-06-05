@@ -231,9 +231,14 @@ git checkout abc1234 -- <file_path>
 ## Reset
 
 ```bash
-# Soft reset (keep staged changes)
+# Soft reset: undo last commit, keep changes staged
 git reset --soft HEAD~1
 
-# Hard reset (discard changes)
+# Mixed reset (default): undo last commit, keep changes unstaged
+git reset --mixed HEAD~1
+# same as:
+git reset HEAD~1
+
+# Hard reset (Risk!): undo last commit and discard changes
 git reset --hard HEAD~1
 ```
