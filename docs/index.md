@@ -9,6 +9,8 @@
   - [✅ Recommended Repository-Only Git Identity Configuration](git/10-setup.md#✅-recommended-repository-only-git-identity-configuration)
   - [Partial commit workflow with stash (clean working tree)](git/15-gitStash.md#partial-commit-workflow-with-stash-(clean-working-tree))
   - [Setup Meld as Default Git Merge Tool on Ubuntu/Debian](git/20-meldForMergeAndDiff.md#setup-meld-as-default-git-merge-tool-on-ubuntu/debian)
+  - [Manage Forked Repo And Update](git/25-fork-and-update.md#manage-forked-repo-and-update)
+  - [Recommended structure](git/25-fork-and-update.md#recommended-structure)
   - [Multi-Account GitHub SSH Setup (Clean and Safe)](git/30-multiAccount.md#multi-account-github-ssh-setup-(clean-and-safe))
   - [Clean SSH + Git Multi-Account Setup (Delete Everything and Start Fresh)](git/40-multiAccount-detailed.md#clean-ssh-+-git-multi-account-setup-(delete-everything-and-start-fresh))
   - [🔥 Git History Rewrite Procedure (Clean Identity Reset)](git/50-historyAndIdentity.md#🔥-git-history-rewrite-procedure-(clean-identity-reset))
