@@ -34,6 +34,21 @@ def test_find_subfolders(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> 
     assert any("missing" in msg for msg in res.report.warnings)
 
 
+def test_find_subfolders_untracked_marker(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    # a folder without <name>.md but with the cswiki.untracked marker is ignored
+    # silently: no warning, no info, and it is not indexed
+    marked = tmp_path / "images"
+    marked.mkdir()
+    (marked / tree.UNTRACKED_FOLDER_MARKER).write_text("# opt-out")
+
+    res = tree.find_subfolders(tmp_path)
+
+    assert res.paths == []
+    assert not any("missing" in msg for msg in res.report.warnings)
+    assert not any(tree.UNTRACKED_FOLDER_MARKER in msg for msg in res.report.infos)
+    assert res.report.errors == []
+
+
 def test_create_tree(tmp_path: Path) -> None:
     # build simple hierarchy
     root = tmp_path / "docs"

@@ -10,6 +10,10 @@ from .markdown_utils import (
 )
 from .report import Report
 
+# Marker file that opts a folder out of the "missing <folder>.md" warning.
+# Useful for folders that intentionally hold no indexable markdown (e.g. images/).
+UNTRACKED_FOLDER_MARKER = "cswiki.untracked"
+
 
 @dataclass
 class FileNode:
@@ -103,6 +107,9 @@ def find_subfolders(folder: Path) -> FindSubFoldersResult:
     A subfolder is valid if:
     - It is not hidden (doesn't start with ".")
     - It contains a file named <folder_name>.md
+
+    Folders missing <folder_name>.md are ignored with a warning, unless they
+    contain the ``cswiki.untracked`` marker, which opts them out of the warning.
     """
     result = FindSubFoldersResult()
 
@@ -115,6 +122,10 @@ def find_subfolders(folder: Path) -> FindSubFoldersResult:
 
         if expected_md.is_file():
             result.paths.append(sub.relative_to(folder))
+        elif (sub / UNTRACKED_FOLDER_MARKER).is_file():
+            # Explicitly opted out: folder intentionally has no <name>.md file.
+            # Ignore it silently, without the missing-<name>.md warning.
+            continue
         else:
             result.report.warnings.append(f"Ignoring folder `{sub}` - missing `{sub.name}.md`")
 
