@@ -23,6 +23,8 @@
   - [Actions Quick Start](gitHub/30-Actions.md#actions-quick-start)
   - [Actions Troubleshooting](gitHub/30-Actions.md#actions-troubleshooting)
   - [How To Create Wiki](gitHub/40-CreateWiki.md#how-to-create-wiki)
+- [ollama-opencode](ollama-opencode/ollama-opencode.md)
+  - [Ollama Local Model Testing](ollama-opencode/00-ollama-setup-and-test.md#ollama-local-model-testing)
 - [pre-commit](pre-commit/pre-commit.md)
   - [pre-commit (quick start)](pre-commit/00-pre-commit-quick.md#pre-commit-(quick-start))
 - [python](python/python.md)
