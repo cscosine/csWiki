@@ -25,3 +25,17 @@ def test_cli_no_docs(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None
         assert "Cannot read" in captured.out
     finally:
         os.chdir(oldcwd)
+
+
+def test_cli_with_custom_docs_path(tmp_path: Path) -> None:
+    # the docs root can be pointed anywhere via --docs-path (no chdir needed)
+    (tmp_path / "index.md").write_text(
+        "# My Test Page\n\n<!-- TOC BEGIN -->\n<!-- TOC END -->\n",
+        encoding="utf-8",
+    )
+
+    ret = cli.main(["--docs-path", str(tmp_path)])
+
+    assert ret == 0
+    content = (tmp_path / "index.md").read_text(encoding="utf-8")
+    assert "## Table Of Contents" in content

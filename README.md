@@ -151,10 +151,10 @@ pip install -e .[dev]
 
 This installs:
 - `pytest` - Testing framework
+- `pytest-cov` - Test coverage
 - `mypy` - Static type checking
 - `ruff` - Linting and formatting
-- `black` - Code formatter
-- `pre-commit` - Git hook automation
+- `pre-commit` - Git hook runner
 
 **Note:** The core package has **no runtime dependencies**; it only uses Python stdlib.
 
@@ -235,7 +235,7 @@ If markers are missing → a warning is generated.
 
 ## ✅ Toolchain
 
--   Formatting → Black
+-   Formatting → Ruff (`ruff-format`)
 -   Linting → Ruff
 -   Static typing → Mypy
 -   Pre-commit enforcement → pre-commit
@@ -250,7 +250,7 @@ Before every commit, the project runs automated checks to guarantee consistency,
 The following checks are enforced:
 
 - ✅ **TOC Generation** – Automatically regenerates all Table of Contents inside `docs/` using `generateTOC.py`.
-- 🎨 **Code Formatting** – Formats Python code using `black`.
+- 🎨 **Code Formatting** – Formats Python code using `ruff-format` (Ruff's formatter).
 - ⚡ **Linting & Auto-Fix** – Runs `ruff` for style checks, bug detection, and automatic fixes.
 - 🧠 **Type Checking** – Validates static types with `mypy`.
 - 🔒 **Repository Integrity** – Fails if unstaged changes remain after hooks run (`git diff --quiet`).
@@ -303,8 +303,9 @@ After installation (`pip install -e .`), you can:
 2. **Use the CLI:**
 
     ```bash
-    cstoc              # equivalent to ./generateTOC.py
-    cstoc --quiet      # suppress debug output
+    cstoc                      # equivalent to ./generateTOC.py
+    cstoc --quiet              # suppress debug output
+    cstoc --docs-path <dir>    # generate TOCs over a custom docs folder
     ```
 
 ### Running the tests
@@ -326,6 +327,6 @@ All tests pass - the package works independently of the repository structure.
 ### Dependencies
 
 - **Runtime:** None (stdlib only)
-- **Development:** `pytest`, `mypy`, `ruff`, `black`, `pre-commit`
+- **Development:** `pytest`, `pytest-cov`, `mypy`, `ruff`, `pre-commit`
 
 Install all with: `pip install -e .[dev]`

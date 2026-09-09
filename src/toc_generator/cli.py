@@ -26,6 +26,14 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         help="Run without printing debug information",
     )
 
+    parser.add_argument(
+        "-d",
+        "--docs-path",
+        type=Path,
+        default=Path("./docs"),
+        help="Path to the documentation root folder (default: ./docs)",
+    )
+
     args = parser.parse_args(argv)
 
     quiet = args.quiet
@@ -33,7 +41,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     if not quiet:
         print("🚀 Generating full recursive TOCs...\n", flush=True)
 
-    root = Path("./docs")
+    root = args.docs_path
 
     # early exit if docs directory does not exist
     if not root.is_dir():
