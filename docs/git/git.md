@@ -6,6 +6,7 @@
 - [✅ Recommended Repository-Only Git Identity Configuration](10-setup.md#✅-recommended-repository-only-git-identity-configuration)
 - [Partial commit workflow with stash (clean working tree)](15-gitStash.md#partial-commit-workflow-with-stash-(clean-working-tree))
 - [Save And Apply Patchsets](16-savePatchset.md#save-and-apply-patchsets)
+- [Git Worktree — Quick Reference](17-gitWorktree.md#git-worktree-—-quick-reference)
 - [Setup Meld as Default Git Merge Tool on Ubuntu/Debian](20-meldForMergeAndDiff.md#setup-meld-as-default-git-merge-tool-on-ubuntu/debian)
 - [Manage Forked Repo And Update](25-fork-and-update.md#manage-forked-repo-and-update)
 - [Recommended structure](25-fork-and-update.md#recommended-structure)
