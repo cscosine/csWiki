@@ -1,8 +1,35 @@
 # csWiki
 
+The cscosine wiki: notes, tips and commands, with its table-of-contents generator
+
 Visit [csWiki](https://cscosine.github.io/csWiki/) to browse the documentation.
 
 ---
+
+<!-- cs-template:begin (this block is owned by cs-project-template: do not edit; the rest of the file is the project's) -->
+## Getting started
+
+Requires Python 3.11 or newer and Git.
+
+```bash
+./setup.sh                    # Windows: .\setup.ps1
+source .venv/bin/activate     # Windows: .\.venv\Scripts\Activate.ps1
+```
+
+`setup.sh` creates `.venv`, installs the project with its development tools, and installs the
+pre-commit hooks.
+
+Checks and tests:
+
+```bash
+pre-commit run --all-files
+pytest                        # --run-all: every test, as CI; --run=<marker>: an opt-in group (tests/conftest.py)
+```
+
+The shared files (setup, checks, CI, agent rules) come from
+[cs-project-template](https://github.com/cscosine/cs-project-template); to bring them to its latest version, on a
+branch: `copier update --defaults`.
+<!-- cs-template:end -->
 
 ## 📦 Project Overview
 
@@ -68,33 +95,6 @@ Your Pages configuration should be:
 - Source: **Deploy from a branch**
 - Branch: `main`
 - Folder: `/docs`
-
----
-
-<!-- cs-template:begin (this block is owned by cs-project-template: do not edit; the rest of the file is the project's) -->
-## Getting started
-
-Requires Python 3.11 or newer and Git.
-
-```bash
-./setup.sh                    # Windows: .\setup.ps1
-source .venv/bin/activate     # Windows: .\.venv\Scripts\Activate.ps1
-```
-
-`setup.sh` creates `.venv`, installs the project with its development tools, and installs the
-pre-commit hooks.
-
-Checks and tests:
-
-```bash
-pre-commit run --all-files
-pytest                        # --run-all: every test, as CI; --run=<marker>: an opt-in group (tests/conftest.py)
-```
-
-The shared files (setup, checks, CI, agent rules) come from
-[cs-project-template](https://github.com/cscosine/cs-project-template); to bring them to its latest version, on a
-branch: `copier update --defaults`.
-<!-- cs-template:end -->
 
 ---
 
