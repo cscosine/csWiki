@@ -30,6 +30,8 @@ dev = [
     "mypy>=1.0",
     "ruff>=0.4",
     "pre-commit>=4",
+    "import-linter[ui]>=2.11",
+    "types-PyYAML",
     # project: below
 ]
 
