@@ -1,7 +1,7 @@
 import argparse
 import sys
+from collections.abc import Sequence
 from pathlib import Path
-from typing import Optional, Sequence
 
 from .report import Report
 from .toc import create_toc_tree, print_toc_tree
@@ -9,7 +9,7 @@ from .tree import create_tree, print_tree
 from .writer import write_toc_on_files
 
 
-def main(argv: Optional[Sequence[str]] = None) -> int:
+def main(argv: Sequence[str] | None = None) -> int:
     """
     Script entry point.
 
@@ -51,7 +51,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         print("\033[31m❌ Errors during tree generation.\033[0m")
         return 1
 
-    tree = create_tree(rootPath=root, main_filename="index")
+    tree = create_tree(root_path=root, main_filename="index")
     if not quiet:
         print_tree(tree.root, "")
 
@@ -60,7 +60,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         print("\033[31m❌ Errors during tree generation.\033[0m")
         return 1
 
-    toc_tree = create_toc_tree(rootPath=root, node=tree.root)
+    toc_tree = create_toc_tree(root_path=root, node=tree.root)
 
     if not quiet:
         # Optional debug:

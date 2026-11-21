@@ -1,5 +1,10 @@
+# Mixed file. Owned by the project: [project] and its sub-tables, [tool.setuptools], and every table after the
+# "project" marker at the end. Owned by the project template (cs-project-template, change it there): [build-system]
+# and the tables between the "template" markers. Never edit a template line here: `copier update` keeps the project
+# lines and replaces the template ones.
+
 [build-system]
-requires = ["setuptools>=61", "wheel"]
+requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -10,71 +15,72 @@ authors = [
   { name = "cscosine-dev", email = "cscosine@gmail.com" }
 ]
 readme = "README.md"
-license = { text = "MIT" }
+license = "MIT"
 requires-python = ">=3.11"
 dependencies = []
-
-[tool.setuptools.packages.find]
-where = ["src"]
 
 [project.scripts]
 cstoc = "toc_generator.cli:main"
 
 [project.optional-dependencies]
-# development tools (tests, linting, type checking)
 dev = [
+    # template: the tools of .pre-commit-config.yaml and the tests
     "pytest>=9",
     "pytest-cov>=7",
     "mypy>=1.0",
     "ruff>=0.4",
     "pre-commit>=4",
+    # project: below
 ]
 
-# ===============================
-# Ruff - Linter + Formatter
-# ===============================
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# === template: begin =================================================================================================
+
 [tool.ruff]
-
-# Maximum allowed line length for linting.
 line-length = 120
-
-# Target Python version for rule selection / parsing.
 target-version = "py311"
 
 [tool.ruff.lint]
-# Enabled rule groups:
-# E  -> Pycodestyle errors (style issues)
-# F  -> Pyflakes (logical errors / unused imports)
-# I  -> Import sorting
-# B  -> Bugbear (common bug patterns)
-select = ["E", "F", "I", "B"]
+# E, W: pycodestyle; F: pyflakes; I: import sorting; B: bugbear; UP: pyupgrade; SIM: simplifications;
+# N: PEP 8 naming; C4: comprehensions
+select = ["E", "F", "I", "B", "UP", "SIM", "N", "C4", "W"]
 
 [tool.ruff.format]
-# Force double quotes in formatted code.
-# This keeps formatting consistent across the project.
 quote-style = "double"
 
-# ===============================
-# MyPy - Static Type Checker
-# ===============================
 [tool.mypy]
 mypy_path = "src"
 
-# Python version used for type checking.
+# csorchestrator workspace
+exclude = "^workspace/"
 python_version = "3.11"
-
-# Enables strict type checking mode.
-# This makes mypy behave like a production-grade type checker.
-# It enables:
-# - No implicit Any
-# - Strict optional checks
-# - Unused ignore detection
+# strict: no implicit Any, strict optional, unused ignores reported
 strict = true
-
-# Ignore missing type hints in third-party libraries.
-# Many libraries don't ship with typing, so this avoids noise.
+# third-party libraries without type hints
 ignore_missing_imports = true
-
-# Treat src/ as a real package root. Do not auto-guess.
+# src/ is the package root: no guessing
 explicit_package_bases = true
 namespace_packages = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+check_untyped_defs = true
+disallow_untyped_decorators = false
+
+[tool.pytest.ini_options]
+# markers and the --run-* options: conftest.py
+testpaths = ["tests"]
+norecursedirs = ["workspace", "*.egg-info", ".git", "__pycache__"]
+pythonpath = ["src"]
+addopts = ["-ra", "--strict-markers"]
+
+# === template: end ===================================================================================================
+
+# --- project ---
+
+[tool.coverage.run]
+branch = true
+source = ["toc_generator"]

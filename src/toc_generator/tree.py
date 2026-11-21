@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import List, Tuple
 
 from .markdown_utils import (
     SectionWithAnchor,
@@ -26,7 +25,7 @@ class FileNode:
     """
 
     file_name: str
-    file_sections: List[SectionWithAnchor] = field(default_factory=list)
+    file_sections: list[SectionWithAnchor] = field(default_factory=list)
 
 
 @dataclass
@@ -49,9 +48,9 @@ class FolderNode:
 
     folder_name: Path
     main_filename: str
-    main_file_sections: List[SectionWithAnchor] = field(default_factory=list)
-    subfolders: List["FolderNode"] = field(default_factory=list)
-    files: List[FileNode] = field(default_factory=list)
+    main_file_sections: list[SectionWithAnchor] = field(default_factory=list)
+    subfolders: list["FolderNode"] = field(default_factory=list)
+    files: list[FileNode] = field(default_factory=list)
 
 
 @dataclass
@@ -78,7 +77,7 @@ class FindSubFoldersResult:
         report: Messages generated during folder scanning.
     """
 
-    paths: List[Path] = field(default_factory=list)
+    paths: list[Path] = field(default_factory=list)
     report: Report = field(default_factory=Report)
 
 
@@ -87,7 +86,7 @@ class FindSubFoldersResult:
 # ------------------------------------------------------------------
 
 
-def find_markdown_files(folder: Path, excluded_name: str) -> List[str]:
+def find_markdown_files(folder: Path, excluded_name: str) -> list[str]:
     """
     Return all markdown filenames inside a folder,
     excluding the specified one.
@@ -132,7 +131,7 @@ def find_subfolders(folder: Path) -> FindSubFoldersResult:
     return result
 
 
-def create_tree(rootPath: Path, main_filename: str) -> CreateTreeResult:
+def create_tree(root_path: Path, main_filename: str) -> CreateTreeResult:
     """
     Build an in-memory representation of the docs folder.
     Extract headings, files and subfolders recursively.
@@ -141,7 +140,7 @@ def create_tree(rootPath: Path, main_filename: str) -> CreateTreeResult:
     report = Report()
     root_node = FolderNode(folder_name=Path(""), main_filename=main_filename)
 
-    nodes_to_explore: List[Tuple[FolderNode, Path]] = [(root_node, rootPath)]
+    nodes_to_explore: list[tuple[FolderNode, Path]] = [(root_node, root_path)]
 
     for node, current_path in nodes_to_explore:
         # ---- Main file ----

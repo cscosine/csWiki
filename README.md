@@ -71,108 +71,30 @@ Your Pages configuration should be:
 
 ---
 
-## 🛠 Development Setup
+<!-- cs-template:begin (this block is owned by cs-project-template: do not edit; the rest of the file is the project's) -->
+## Getting started
 
-### ⚡ Quick Start
-
-```bash
-# 1. Clone repository
-git clone git@github.com:cscosine/csWiki.git
-cd csWiki
-
-# 2. Create virtual environment
-python3.XX -m venv .venv # 3.XX >= 3.11
-source .venv/bin/activate
-
-# or on Windows for Powershell
-.venv\Scripts\activate.ps1
-
-
-# 3. Install package in editable mode with dev dependencies
-pip install -e .[dev]
-
-this
-- Installs the project `.` in editable mode (because of `-e`)
-- Installs the optional dependency group dev normally.
-
-# 4. Run tests directly (package is now importable)
-pytest
-
-# 5. Or use pre-commit hooks
-pre-commit install
-pre-commit run --all-files
-```
-
-### 🌍 Detailed Setup
-
-If you prefer step-by-step instructions:
-
-#### Clone Repository
-
-``` bash
-git clone git@github.com:cscosine/csWiki.git
-```
-
-or
-
-``` bash
-git clone https://github.com/cscosine/csWiki.git
-```
-
----
-
-### Create Virtual Environment
-
-``` bash
-python -m venv .venv
-source .venv/bin/activate
-```
-_Note_: You may need `python3` instead of `python`.
-
-On Windows:
-
-``` bash
-.venv\Scripts\activate
-```
-
-or for PowerShell
-
-``` bash
-.venv\Scripts\activate.ps1
-```
-
-### Install Development Dependencies
-
-All development tools are listed as optional dependencies in `pyproject.toml`:
+Requires Python 3.11 or newer and Git.
 
 ```bash
-pip install -e .[dev]
+./setup.sh                    # Windows: .\setup.ps1
+source .venv/bin/activate     # Windows: .\.venv\Scripts\Activate.ps1
 ```
 
-This installs:
-- `pytest` - Testing framework
-- `pytest-cov` - Test coverage
-- `mypy` - Static type checking
-- `ruff` - Linting and formatting
-- `pre-commit` - Git hook runner
+`setup.sh` creates `.venv`, installs the project with its development tools, and installs the
+pre-commit hooks.
 
-**Note:** The core package has **no runtime dependencies**; it only uses Python stdlib.
+Checks and tests:
 
-### Install Pre-Commit Hooks
-
-``` bash
-pre-commit install
-```
-
-Pre-commit hooks run automatically before each commit.
-
----
-
-## 🔍 Run Pre-Commit Manually
-
-``` bash
+```bash
 pre-commit run --all-files
+pytest                        # --run-all: every test, as CI; --run=<marker>: an opt-in group (tests/conftest.py)
 ```
+
+The shared files (setup, checks, CI, agent rules) come from
+[cs-project-template](https://github.com/cscosine/cs-project-template); to bring them to its latest version, on a
+branch: `copier update --defaults`.
+<!-- cs-template:end -->
 
 ---
 

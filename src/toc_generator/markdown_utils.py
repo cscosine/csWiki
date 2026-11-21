@@ -1,10 +1,12 @@
 import re
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Optional, Tuple
+
+TOC_BEGIN = "<!-- TOC BEGIN -->"
+TOC_END = "<!-- TOC END -->"
 
 
-def replace_toc(content: str, toc: str) -> Tuple[str, bool]:
+def replace_toc(content: str, toc: str) -> tuple[str, bool]:
     """
     Replace the TOC block between:
 
@@ -14,9 +16,6 @@ def replace_toc(content: str, toc: str) -> Tuple[str, bool]:
     Returns:
         (updated_content, success_flag)
     """
-
-    TOC_BEGIN = "<!-- TOC BEGIN -->"
-    TOC_END = "<!-- TOC END -->"
 
     if TOC_BEGIN not in content or TOC_END not in content:
         return content, False
@@ -32,7 +31,7 @@ def replace_toc(content: str, toc: str) -> Tuple[str, bool]:
     return updated_content, True
 
 
-def read_markdown_file(md_path: Path) -> Optional[str]:
+def read_markdown_file(md_path: Path) -> str | None:
     """
     Read a markdown file safely.
     Returns None if file cannot be read.
@@ -43,7 +42,7 @@ def read_markdown_file(md_path: Path) -> Optional[str]:
         return None
 
 
-def extract_level1_sections(content: str) -> List[str]:
+def extract_level1_sections(content: str) -> list[str]:
     """
     Extract all level-1 headings:
 
@@ -51,7 +50,7 @@ def extract_level1_sections(content: str) -> List[str]:
 
     Ignoring fenced code blocks (```).
     """
-    sections: List[str] = []
+    sections: list[str] = []
     in_code_block = False
 
     for line in content.splitlines():
@@ -93,6 +92,6 @@ def section_to_anchor(section: str) -> SectionWithAnchor:
     return SectionWithAnchor(section=section, anchor=anchor)
 
 
-def sections_to_anchors(sections: List[str]) -> List[SectionWithAnchor]:
+def sections_to_anchors(sections: list[str]) -> list[SectionWithAnchor]:
     """Convert multiple section titles into anchor objects."""
     return [section_to_anchor(s) for s in sections]

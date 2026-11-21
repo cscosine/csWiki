@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import List, Optional
 
 from .tree import FolderNode
 
@@ -23,7 +22,7 @@ class TOCFile:
     """
 
     file_full_path: Path
-    toc_entries: List[SectionWithAnchorAndLevel] = field(default_factory=list)
+    toc_entries: list[SectionWithAnchorAndLevel] = field(default_factory=list)
 
 
 @dataclass
@@ -38,8 +37,8 @@ class TOCFolder:
     """
 
     main_file_toc: TOCFile
-    files_toc: List[TOCFile] = field(default_factory=list)
-    subfolder_toc: List["TOCFolder"] = field(default_factory=list)
+    files_toc: list[TOCFile] = field(default_factory=list)
+    subfolder_toc: list["TOCFolder"] = field(default_factory=list)
 
 
 # ------------------------------------------------------------------
@@ -47,16 +46,16 @@ class TOCFolder:
 # ------------------------------------------------------------------
 
 
-def create_toc_tree_impl(rootPath: Path, node: FolderNode) -> TOCFolder:
+def create_toc_tree_impl(root_path: Path, node: FolderNode) -> TOCFolder:
     """
     Recursively build TOC structure from folder tree.
     """
-    nodeTOC = TOCFolder(main_file_toc=TOCFile(file_full_path=rootPath / f"{node.main_filename}.md"))
+    node_toc = TOCFolder(main_file_toc=TOCFile(file_full_path=root_path / f"{node.main_filename}.md"))
 
     # ---- Folder own sections ----
 
     for section in node.main_file_sections:
-        nodeTOC.main_file_toc.toc_entries.append(
+        node_toc.main_file_toc.toc_entries.append(
             SectionWithAnchorAndLevel(
                 section.section,
                 f"{node.main_filename}.md#{section.anchor}",
@@ -65,17 +64,17 @@ def create_toc_tree_impl(rootPath: Path, node: FolderNode) -> TOCFolder:
         )
 
     # ---- Subfolders ----
-    subfoldersToc: List[SectionWithAnchorAndLevel] = []
+    subfolders_toc: list[SectionWithAnchorAndLevel] = []
 
     for subfolder in node.subfolders:
-        sTOC_folder_node = create_toc_tree_impl(
-            rootPath / subfolder.folder_name,
+        subfolder_toc = create_toc_tree_impl(
+            root_path / subfolder.folder_name,
             subfolder,
         )
 
-        nodeTOC.subfolder_toc.append(sTOC_folder_node)
+        node_toc.subfolder_toc.append(subfolder_toc)
 
-        subfoldersToc.append(
+        subfolders_toc.append(
             SectionWithAnchorAndLevel(
                 f"{subfolder.folder_name}",
                 Path(subfolder.folder_name / f"{subfolder.main_filename}.md").as_posix(),
@@ -83,8 +82,8 @@ def create_toc_tree_impl(rootPath: Path, node: FolderNode) -> TOCFolder:
             )
         )
 
-        for te in sTOC_folder_node.main_file_toc.toc_entries:
-            subfoldersToc.append(
+        for te in subfolder_toc.main_file_toc.toc_entries:
+            subfolders_toc.append(
                 SectionWithAnchorAndLevel(
                     te.section,
                     Path(subfolder.folder_name / te.anchor).as_posix(),
@@ -94,10 +93,10 @@ def create_toc_tree_impl(rootPath: Path, node: FolderNode) -> TOCFolder:
 
     # ---- Sibling files ----
     for nf in node.files:
-        sTOC_file_node = TOCFile(file_full_path=rootPath / f"{nf.file_name}.md")
+        file_toc = TOCFile(file_full_path=root_path / f"{nf.file_name}.md")
 
         for s in nf.file_sections:
-            sTOC_file_node.toc_entries.append(
+            file_toc.toc_entries.append(
                 SectionWithAnchorAndLevel(
                     s.section,
                     f"#{s.anchor}",
@@ -105,7 +104,7 @@ def create_toc_tree_impl(rootPath: Path, node: FolderNode) -> TOCFolder:
                 )
             )
 
-            nodeTOC.main_file_toc.toc_entries.append(
+            node_toc.main_file_toc.toc_entries.append(
                 SectionWithAnchorAndLevel(
                     s.section,
                     f"{nf.file_name}.md#{s.anchor}",
@@ -113,13 +112,13 @@ def create_toc_tree_impl(rootPath: Path, node: FolderNode) -> TOCFolder:
                 )
             )
 
-        nodeTOC.files_toc.append(sTOC_file_node)
+        node_toc.files_toc.append(file_toc)
 
     # ---- Append subfolder entries ----
-    for st in subfoldersToc:
-        nodeTOC.main_file_toc.toc_entries.append(st)
+    for st in subfolders_toc:
+        node_toc.main_file_toc.toc_entries.append(st)
 
-    return nodeTOC
+    return node_toc
 
 
 # ------------------------------------------------------------------
@@ -127,37 +126,37 @@ def create_toc_tree_impl(rootPath: Path, node: FolderNode) -> TOCFolder:
 # ------------------------------------------------------------------
 
 
-def finalize_toc_tree(node: TOCFolder, parent: Optional[TOCFolder]) -> None:
+def finalize_toc_tree(node: TOCFolder, parent: TOCFolder | None) -> None:
     """
     Inject parent navigation entries into TOC recursively.
     """
 
     if parent is not None:
-        parentEntry = SectionWithAnchorAndLevel(
+        parent_entry = SectionWithAnchorAndLevel(
             f"← Back : {parent.main_file_toc.file_full_path.stem}",
             f"../{parent.main_file_toc.file_full_path.name}",
             0,
         )
-        node.main_file_toc.toc_entries = [parentEntry] + node.main_file_toc.toc_entries
+        node.main_file_toc.toc_entries = [parent_entry] + node.main_file_toc.toc_entries
 
-    parentEntry = SectionWithAnchorAndLevel(
+    parent_entry = SectionWithAnchorAndLevel(
         f"← Back : {node.main_file_toc.file_full_path.stem}",
         f"{node.main_file_toc.file_full_path.name}",
         0,
     )
 
     for file_toc in node.files_toc:
-        file_toc.toc_entries = [parentEntry] + file_toc.toc_entries
+        file_toc.toc_entries = [parent_entry] + file_toc.toc_entries
 
     for subfolder in node.subfolder_toc:
         finalize_toc_tree(subfolder, node)
 
 
-def create_toc_tree(rootPath: Path, node: FolderNode) -> TOCFolder:
+def create_toc_tree(root_path: Path, node: FolderNode) -> TOCFolder:
     """
     Build full TOC tree and finalize navigation links.
     """
-    root = create_toc_tree_impl(rootPath, node)
+    root = create_toc_tree_impl(root_path, node)
     finalize_toc_tree(root, None)
     return root
 

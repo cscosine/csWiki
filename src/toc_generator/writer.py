@@ -1,5 +1,3 @@
-from typing import List
-
 from .markdown_utils import read_markdown_file, replace_toc
 from .report import Report
 from .toc import TOCFile, TOCFolder
@@ -11,7 +9,7 @@ def write_toc_file(node: TOCFile) -> Report:
     """
     report = Report()
 
-    lines: List[str] = ["## Table Of Contents"]
+    lines: list[str] = ["## Table Of Contents"]
 
     for s in node.toc_entries:
         indent = "  " * s.level
