@@ -25,4 +25,4 @@ there, then `copier update --defaults`; never edit its parts here):
 
 ## csWiki
 
-the wiki of cscosine
+The cscosine wiki: notes, tips and commands, with its table-of-contents generator
