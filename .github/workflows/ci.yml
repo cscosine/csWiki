@@ -36,9 +36,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
-          cache-dependency-path: |
-            pyproject.toml
-            constraints-minimum.txt
+          cache-dependency-path: pyproject.toml
 
       # MSVC on PATH: tests may compile, and pip may build a Rust extension from source with the MSVC linker
       - name: Setup MSVC environment
@@ -47,13 +45,33 @@ jobs:
         with:
           arch: x64
 
+      # the minimum job: every lower bound of pyproject.toml (dependencies and dev tools) pinned, ">=X" becomes "==X"
+      # (constraints take no extras: "import-linter[ui]>=2.11" becomes "import-linter==2.11")
+      - name: Pin the minimum versions
+        if: matrix.deps == 'minimum'
+        run: |
+          python - > "$RUNNER_TEMP/constraints-minimum.txt" <<'EOF'
+          import re
+          import tomllib
+
+          with open("pyproject.toml", "rb") as f:
+              project = tomllib.load(f)["project"]
+          requirements = project.get("dependencies", []) + project.get("optional-dependencies", {}).get("dev", [])
+          for requirement in requirements:
+              match = re.match(r"\s*([A-Za-z0-9_.-]+)(\[[^\]]*\])?\s*>=\s*([^,;\s]+)", requirement)
+              if match:
+                  print(f"{match.group(1)}=={match.group(3)}")
+          EOF
+          cat "$RUNNER_TEMP/constraints-minimum.txt"
+        shell: bash
+
       # pwsh, not bash: Git Bash puts Git's usr/bin first on PATH, and its link.exe is found instead of the MSVC one
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           if ("${{ matrix.deps }}" -eq "minimum") {
-            python -m pip install -e ".[dev]" -c constraints-minimum.txt
+            python -m pip install -e ".[dev]" -c "$env:RUNNER_TEMP/constraints-minimum.txt"
           } else {
             python -m pip install -e ".[dev]"
           }
